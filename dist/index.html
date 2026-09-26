@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#455dff">
+  <meta name="description" content="wethead — проекты">
+  <title>wethead</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">✦</span>
+        <h1 class="brand-name">wethead</h1>
+      </div>
+      <p class="tagline">проекты</p>
+    </header>
+
+    <section id="projects" class="list" aria-label="Проекты"></section>
+  </main>
+
+  <script src="projects.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("projects");
+      var projects = window.WETHEAD_PROJECTS || [];
+
+      if (!projects.length) {
+        root.innerHTML = '<p class="empty">Пока нет проектов</p>';
+        return;
+      }
+
+      var frag = document.createDocumentFragment();
+
+      projects.forEach(function (project) {
+        var link = document.createElement("a");
+        link.className = "project-card";
+        link.href = project.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        var icon = document.createElement("span");
+        icon.className = "row-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = project.icon || project.title.charAt(0);
+
+        var copy = document.createElement("span");
+        copy.className = "row-copy";
+
+        var title = document.createElement("span");
+        title.className = "row-title";
+        title.textContent = project.title;
+
+        var meta = document.createElement("span");
+        meta.className = "row-meta";
+        meta.textContent = project.description || "";
+
+        copy.appendChild(title);
+        copy.appendChild(meta);
+
+        var chevron = document.createElement("span");
+        chevron.className = "chevron";
+        chevron.setAttribute("aria-hidden", "true");
+        chevron.textContent = "›";
+
+        link.appendChild(icon);
+        link.appendChild(copy);
+        link.appendChild(chevron);
+        frag.appendChild(link);
+      });
+
+      root.appendChild(frag);
+    })();
+  </script>
+</body>
+</html>

@@ -1,19 +1,19 @@
 :root {
   color-scheme: dark;
-  /* GitHub Primer (dark) */
-  --accent: #2f81f7;
+  /* Dark base + red accent from avatar */
+  --accent: #e11d2e;
   --bg: #0d1117;
   --canvas-subtle: #010409;
   --surface: #161b22;
   --surface2: #21262d;
   --text: #e6edf3;
   --muted: #848d97;
-  --primary: #2f81f7;
-  --primary-soft: rgba(56, 139, 253, 0.15);
+  --primary: #e11d2e;
+  --primary-soft: rgba(225, 29, 46, 0.16);
   --line: #30363d;
   --line-muted: #21262d;
   --shadow: none;
-  --focus: #1f6feb;
+  --focus: #e11d2e;
   --radius: 6px;
   --radius-lg: 12px;
 }
@@ -114,7 +114,7 @@ body {
   font-size: 18px;
   font-weight: 600;
   flex-shrink: 0;
-  border: 1px solid rgba(56, 139, 253, 0.2);
+  border: 1px solid rgba(225, 29, 46, 0.28);
 }
 
 .row-copy {
@@ -126,14 +126,14 @@ body {
   display: block;
   font-weight: 600;
   font-size: 16px;
-  color: var(--primary);
+  color: var(--text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .project-card:hover .row-title {
-  text-decoration: underline;
+  color: var(--primary);
 }
 
 .row-meta {

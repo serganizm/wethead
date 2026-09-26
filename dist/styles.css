@@ -1,15 +1,21 @@
 :root {
   color-scheme: light;
-  --accent: #455dff;
-  --bg: #f7f7ff;
-  --surface: #fff;
-  --surface2: color-mix(in srgb, var(--accent) 8%, #fff);
-  --text: #1b1b22;
-  --muted: #666772;
-  --primary: var(--accent);
-  --primary-soft: color-mix(in srgb, var(--accent) 16%, #fff);
-  --line: #e4e4ec;
-  --shadow: 0 10px 30px rgba(30, 40, 110, 0.09);
+  /* GitHub Primer (light) */
+  --accent: #0969da;
+  --bg: #ffffff;
+  --canvas-subtle: #f6f8fa;
+  --surface: #ffffff;
+  --surface2: #f6f8fa;
+  --text: #1f2328;
+  --muted: #656d76;
+  --primary: #0969da;
+  --primary-soft: #ddf4ff;
+  --line: #d0d7de;
+  --line-muted: #d8dee4;
+  --shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --focus: #0969da;
+  --radius: 6px;
+  --radius-lg: 12px;
 }
 
 * {
@@ -24,10 +30,14 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
-    var(--bg);
+    linear-gradient(180deg, var(--canvas-subtle) 0, var(--canvas-subtle) 180px, var(--bg) 180px);
   color: var(--text);
-  font-family: Inter, Roboto, system-ui, -apple-system, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 .shell {
@@ -37,86 +47,87 @@ body {
 }
 
 .hero {
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .brand-icon {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  background: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--text);
   color: #fff;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   flex-shrink: 0;
 }
 
 .brand-name {
   margin: 0;
-  font-size: clamp(32px, 7vw, 44px);
-  font-weight: 750;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
 }
 
 .tagline {
   margin: 0;
   color: var(--muted);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .project-card {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  padding: 17px 18px;
+  padding: 16px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   background: var(--surface);
   color: var(--text);
   text-decoration: none;
   box-shadow: var(--shadow);
-  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  transition: border-color 0.12s ease, background 0.12s ease;
 }
 
 .project-card:hover {
-  border-color: var(--primary);
+  border-color: var(--line);
   background: var(--surface2);
-  transform: translateY(-1px);
 }
 
 .project-card:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
 .row-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
   background: var(--primary-soft);
   color: var(--primary);
   display: grid;
   place-items: center;
-  font-size: 21px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 .row-copy {
@@ -126,18 +137,23 @@ body {
 
 .row-title {
   display: block;
-  font-weight: 720;
+  font-weight: 600;
   font-size: 16px;
+  color: var(--primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.project-card:hover .row-title {
+  text-decoration: underline;
+}
+
 .row-meta {
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
-  margin-top: 3px;
+  margin-top: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -145,7 +161,7 @@ body {
 
 .chevron {
   color: var(--muted);
-  font-size: 24px;
+  font-size: 20px;
   flex-shrink: 0;
   line-height: 1;
 }
@@ -155,19 +171,18 @@ body {
   color: var(--muted);
   padding: 48px 20px;
   border: 1px dashed var(--line);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-radius: var(--radius-lg);
+  background: var(--canvas-subtle);
 }
 
 @media (max-width: 600px) {
   .shell {
-    padding: 32px 14px 64px;
+    padding: 32px 16px 64px;
   }
 
   .brand-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    border-radius: 11px;
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
   }
 }

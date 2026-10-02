@@ -50,7 +50,15 @@
         var icon = document.createElement("span");
         icon.className = "row-icon";
         icon.setAttribute("aria-hidden", "true");
-        icon.textContent = project.icon || project.title.charAt(0);
+
+        if (project.icon && /\.(png|jpe?g|webp|svg|gif)$/i.test(project.icon)) {
+          var img = document.createElement("img");
+          img.src = project.icon;
+          img.alt = "";
+          icon.appendChild(img);
+        } else {
+          icon.textContent = project.icon || project.title.charAt(0);
+        }
 
         var copy = document.createElement("span");
         copy.className = "row-copy";

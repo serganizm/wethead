@@ -104,15 +104,16 @@ body {
 }
 
 .row-icon {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius);
   background: var(--primary-soft);
   color: var(--primary);
   display: grid;
   place-items: center;
-  font-size: 18px;
+  font-size: 36px;
   font-weight: 600;
+  line-height: 1;
   flex-shrink: 0;
   border: 1px solid rgba(240, 246, 252, 0.2);
 }
